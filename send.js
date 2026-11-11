@@ -387,6 +387,8 @@ function setProgress(ratio, text) {
 }
 
 function shareText(url, password, expiresAt) {
+  // 台帳にパスワードの控えを残さない設定（Code.gs の KEEP_PASSWORD = false）では、一覧からは URL と期限だけをコピーする
+  if (!password) return `URL：${url}\n期限：${formatDate(expiresAt)} まで`;
   return `URL：${url}\nパスワード：${password}\n期限：${formatDate(expiresAt)} まで`;
 }
 
